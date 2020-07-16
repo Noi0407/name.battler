@@ -49,7 +49,7 @@ public class Knight extends BasePlayer {
         System.out.println(this.getName() + "の攻撃!");
 
         if (canAllMagics()) {
-            selectDoMagic(magics, defender, defender);
+            selectDoMagic(magics, attacker, defender);
         }else{
             nMagic.doMagic(attacker, defender);
         }
