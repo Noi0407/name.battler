@@ -5,6 +5,7 @@ import jobs.Fighter;
 import jobs.Knight;
 import jobs.Priest;
 import jobs.Wizard;
+import party_operation.Party;
 
 import java.util.List;
 import java.util.Random;

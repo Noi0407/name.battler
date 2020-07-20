@@ -1,3 +1,5 @@
+package party_operation;
+
 import java.util.ArrayList;
 import jobs.BasePlayer;
 
@@ -5,12 +7,14 @@ public class Party {
 
     // memberというアレイリストを持っている。インスタンスで作成。
     private ArrayList<BasePlayer> members;
+    private BaseOperation partyOperation;
+    
 
-    Party() {
+    public Party() {
         members = new ArrayList<BasePlayer>();
     }
 
-    ArrayList<BasePlayer> getMembers() {
+    public ArrayList<BasePlayer> getMembers() {
         return members;
     }
 
