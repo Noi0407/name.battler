@@ -23,5 +23,4 @@ public class Thunder implements IMagic {
         Random random = new Random();
         return random.nextInt(11) + 20;
     }
-
 }

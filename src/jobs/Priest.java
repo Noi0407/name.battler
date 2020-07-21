@@ -8,15 +8,13 @@ import magic.Heal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Priest extends BasePlayer {
 
     List<IMagic> someMagics = new ArrayList<IMagic>();
     List<IMagic> allMagics = new ArrayList<IMagic>();
-    IMagic nMagic = new NomalMagic();
 
-    Random random = new Random();
+    IMagic nMagic = new NomalMagic();
 
     public Priest(String name) {
         
@@ -58,9 +56,11 @@ public class Priest extends BasePlayer {
         System.out.println(this.getName() + "の攻撃!");
 
         if (canAllMagics()) {
-            selectDoMagic(allMagics, attacker, defender);
+            operation.selectMagic(allMagics).doMagic(attacker, defender);
+            
         } else if (canSomeMagics()) {
-            selectDoMagic(someMagics, attacker, defender);
+            operation.selectMagic(someMagics).doMagic(attacker, defender);
+
         } else {
             // 通常攻撃を行う
             nMagic.doMagic(attacker, defender);
@@ -73,11 +73,6 @@ public class Priest extends BasePlayer {
 
     protected boolean canSomeMagics() {
         return this.getMp() >= 10 ? true : false;
-    }
-
-    protected void selectDoMagic(List<IMagic> magics, BasePlayer attacker, BasePlayer defender) {
-        int selectIndex = random.nextInt(magics.size());
-        magics.get(selectIndex).doMagic(attacker, defender);
     }
 
 }

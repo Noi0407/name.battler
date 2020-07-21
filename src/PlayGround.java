@@ -6,6 +6,7 @@ import jobs.Knight;
 import jobs.Priest;
 import jobs.Wizard;
 import party_operation.Party;
+import party_operation.BaseOperation;
 
 import java.util.List;
 import java.util.Random;
@@ -61,8 +62,8 @@ public class PlayGround {
             int jobType = inputJob(playerName);
 
             party.appendPlayer(createPlayer(playerName, jobType));
-
         }
+
     }
 
     private BasePlayer createPlayer(String playerName, int jobType) {
@@ -98,6 +99,7 @@ public class PlayGround {
         try {
             int jobType = Integer.parseInt(jobStr);
             return jobType;
+            
         } catch (Exception e) {
             System.out.println("数字で入力してください。");
             jobStr = stdin.next();
@@ -113,7 +115,9 @@ public class PlayGround {
 
     // ソート
     private void sortAgi(List<BasePlayer> sortAgiPlayers2) {
+
         Collections.sort(sortAgiPlayers2, new Comparator<BasePlayer>() {
+            
             @Override
             public int compare(BasePlayer playerFirst, BasePlayer playerSecond) {
                 return Integer.compare(playerSecond.getAgi(), playerFirst.getAgi());

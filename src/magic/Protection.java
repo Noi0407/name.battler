@@ -2,7 +2,6 @@ package magic;
 
 import jobs.BasePlayer;
 
-
 public class Protection implements IMagic {
 
     final static String MAGIC_NAME = "プロテクション";
@@ -17,5 +16,4 @@ public class Protection implements IMagic {
 
         attacker.defenseEnhancement(UP_DEF);
     }
-    
 }

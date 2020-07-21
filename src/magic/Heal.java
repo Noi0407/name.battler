@@ -2,9 +2,10 @@ package magic;
 
 import jobs.BasePlayer;
 
-public class Heal implements IMagic {
+public class Heal implements IMagic, RecoveryHp {
 
     final static String MAGIC_NAME = "ヒール";
+    
     final static int MAGIC_MP = 20;
     final static int UP_HP = 50;
 

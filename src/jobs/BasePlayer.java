@@ -3,8 +3,14 @@ package jobs;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
+import party_operation.BaseOperation;
+
 // プレイヤークラス(各種ジョブの基底クラス)
 public class BasePlayer {
+
+	//作戦
+	BaseOperation operation;
+
 	// =======================
 	// フィールド変数
 	// =======================
@@ -44,6 +50,10 @@ public class BasePlayer {
 		// キャラクターのパラメータ生成
 		makeCharacter();
 		this.maxHp = this.getHp();
+	}
+
+	public void setOperation(BaseOperation partyOperation){
+		this.operation = partyOperation;
 	}
 
 	// =======================

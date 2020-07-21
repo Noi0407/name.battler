@@ -7,15 +7,23 @@ public class Party {
 
     // memberというアレイリストを持っている。インスタンスで作成。
     private ArrayList<BasePlayer> members;
+    //partyの作戦
     private BaseOperation partyOperation;
-    
 
     public Party() {
-        members = new ArrayList<BasePlayer>();
+        this.members = new ArrayList<BasePlayer>();
+    }
+
+    public void setPartyOperation(BaseOperation operation) {
+        this.partyOperation = operation;
     }
 
     public ArrayList<BasePlayer> getMembers() {
-        return members;
+        return this.members;
+    }
+
+    public BaseOperation getPartyOperation(){
+        return this.partyOperation;
     }
 
     /**

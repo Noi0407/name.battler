@@ -23,7 +23,7 @@ public class BaseOperation implements IOperation {
     }
 
     @Override
-    public BasePlayer selectEnemy(Party targetParty) {
+    public BasePlayer selectTarget(Party targetParty) {
 
         BasePlayer defender = targetParty.getMembers().get(random.nextInt(targetParty.getMembers().size()));
         return defender;

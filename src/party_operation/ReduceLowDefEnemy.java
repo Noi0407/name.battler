@@ -2,11 +2,11 @@ package party_operation;
 
 import jobs.BasePlayer;
 
-public class ReduceLowHpEnemy extends BaseOperation {
+public class ReduceLowDefEnemy extends BaseOperation {
 
     @Override
     public void initOperation() {
-        this.operationType = OperationType.REDUCE_LOW_HP_ENEMY;
+        this.operationType = OperationType.REDUCE_LOW_DEF_ENEMY;
     }
 
     @Override
@@ -15,8 +15,8 @@ public class ReduceLowHpEnemy extends BaseOperation {
         BasePlayer defender = targetParty.getMembers().get(0);
 
         for (BasePlayer p : targetParty.getMembers()) {
-            
-            if (defender.getHp() > p.getHp())
+
+            if (defender.getDef() > p.getDef())
                 defender = p;
         }
 

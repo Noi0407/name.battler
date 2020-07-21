@@ -1,6 +1,5 @@
 package jobs;
 
-import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,9 +13,8 @@ import magic.FirstAid;
 public class Knight extends BasePlayer {
 
     List<IMagic> magics = new ArrayList<>();
-    IMagic nMagic = new NomalMagic();
 
-    Random random = new Random();
+    IMagic nMagic = new NomalMagic();
 
     public Knight(String name) {
         super(name);
@@ -49,7 +47,10 @@ public class Knight extends BasePlayer {
         System.out.println(this.getName() + "の攻撃!");
 
         if (canAllMagics()) {
-            selectDoMagic(magics, attacker, defender);
+
+            //作戦に従ってマジックを選択して使う
+            operation.selectMagic(magics).doMagic(attacker, defender);
+            
         }else{
             nMagic.doMagic(attacker, defender);
         }
@@ -58,12 +59,6 @@ public class Knight extends BasePlayer {
 
     private boolean canAllMagics() {
         return this.getMp() >= 10 ? true : false;
-    }
-
-    private void selectDoMagic(List<IMagic> magics, BasePlayer attacker, BasePlayer defender) {
-        
-        int selectIndex = random.nextInt(magics.size());
-        magics.get(selectIndex).doMagic(attacker, defender);
     }
 
 }

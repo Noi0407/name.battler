@@ -8,7 +8,7 @@ public interface IMagic {
     String MAGIC_NAME = "";
     // 使用するMP
     int MAGIC_MP = 0;
-    // 魔法を行う
 
+    // 魔法を行う
     void doMagic(BasePlayer attacker, BasePlayer defender);
 }

@@ -29,4 +29,6 @@ public enum OperationType {
         return this.operationManual;
     }
 
+    //　あとでgetterをprivateにして、public表示メソッド作成
+
 }

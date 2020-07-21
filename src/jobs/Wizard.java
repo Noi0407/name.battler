@@ -7,15 +7,13 @@ import magic.Fire;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Wizard extends BasePlayer {
 
     IMagic nMagic = new NomalMagic();
+
     List<IMagic> someMagcs = new ArrayList<>();
     List<IMagic> allMagics = new ArrayList<>();
-
-    Random random = new Random();
 
     public Wizard(String name) {
         super(name);
@@ -50,9 +48,11 @@ public class Wizard extends BasePlayer {
         System.out.println(this.getName() + "の攻撃!");
 
         if (canAllMagics()) {
-            selectDoMagic(allMagics, attacker, defender);
+            operation.selectMagic(allMagics).doMagic(attacker, defender);
+
         } else if (canSomeMagics()) {
-            selectDoMagic(someMagcs, attacker, defender);
+            operation.selectMagic(someMagcs).doMagic(attacker, defender);
+
         } else {
             nMagic.doMagic(attacker, defender);
         }
@@ -64,11 +64,6 @@ public class Wizard extends BasePlayer {
 
     private boolean canSomeMagics() {
         return this.getMp() >= 10 ? true : false;
-    }
-
-    private void selectDoMagic(List<IMagic> magics, BasePlayer attacker, BasePlayer defender) {
-        int selectIndex = random.nextInt(magics.size());
-        magics.get(selectIndex).doMagic(attacker, defender);
     }
 
 }

@@ -29,4 +29,5 @@ public class Paralysis implements IMagic {
         Random random = new Random();
         return random.nextInt(5) == 0 ? true : false;
     }
+
 }

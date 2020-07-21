@@ -14,5 +14,4 @@ public class Special implements IMagic {
 
         defender.receiveDamage(attacker.getStr());
     }
-    
 }
