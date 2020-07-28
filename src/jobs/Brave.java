@@ -34,6 +34,7 @@ public class Brave extends BasePlayer {
         
         if (canSpecial()) {
             specialMagic.doMagic(attacker, defender);
+            
         } else {
             nMagic.doMagic(attacker, defender);
         }

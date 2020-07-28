@@ -244,11 +244,10 @@ public class BasePlayer {
 	 * @return ダメージ値(0～)
 	 */
 	public int calcDamage(BasePlayer target) {
+		
 		int damage = getStr() - target.getDef();
-		if (damage < 0) {
-			damage = 0;
-		}
-		return damage;
+		
+		return  damage < 0 ? 0 : damage;
 	}
 
 	/**
