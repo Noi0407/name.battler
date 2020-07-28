@@ -26,6 +26,9 @@ public class Party {
         return this.partyOperation;
     }
 
+    //playerに作戦を覚えさせる
+    
+
     /**
      * パーティーにプレイヤーを追加する
      * 

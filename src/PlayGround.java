@@ -6,7 +6,13 @@ import jobs.Knight;
 import jobs.Priest;
 import jobs.Wizard;
 import party_operation.Party;
+import party_operation.RandomSelect;
+import party_operation.RecoveryFiast;
+import party_operation.ReduceLowDefEnemy;
+import party_operation.ReduceLowHpEnemy;
+import party_operation.ReduceStrongEnemy;
 import party_operation.BaseOperation;
+import party_operation.OperationType;
 
 import java.util.List;
 import java.util.Random;
@@ -64,6 +70,8 @@ public class PlayGround {
             party.appendPlayer(createPlayer(playerName, jobType));
         }
 
+        party.setPartyOperation(inputOperation(PARTY_NAME));
+        
     }
 
     private BasePlayer createPlayer(String playerName, int jobType) {
@@ -99,13 +107,67 @@ public class PlayGround {
         try {
             int jobType = Integer.parseInt(jobStr);
             return jobType;
-            
+
         } catch (Exception e) {
             System.out.println("数字で入力してください。");
             jobStr = stdin.next();
         }
 
         return 0;
+    }
+
+    private BaseOperation inputOperation(String PARTY_NAME) {
+
+        System.out.printf("/n" + PARTY_NAME + "の作戦を選択してください。/n");
+
+       //説明を表示
+        OperationType.printDescription();
+
+        int operationType = scanOperationType();
+
+        // どの作戦が選ばれたか判断して返す
+        BaseOperation operation = decisionOperation(operationType);
+
+        return operation;
+    }
+
+    private int scanOperationType() {
+
+        String opeStr = stdin.next();
+
+        try {
+
+            int operationType = Integer.parseInt(opeStr);
+            return operationType;
+
+        } catch (Exception e) {
+
+            System.out.println("数字で入力してください。");
+            opeStr = stdin.next();
+
+        }
+
+        return 0;
+    }
+
+    private BaseOperation decisionOperation(int operationType) {
+
+        switch (operationType) {
+            case 0:
+                return new RandomSelect();
+            case 1:
+                return new RecoveryFiast();
+            case 2:
+                return new ReduceLowHpEnemy();
+            case 3:
+                return new ReduceLowDefEnemy();
+            case 4:
+                return new ReduceStrongEnemy();
+
+            default:
+                return new RandomSelect();
+        }
+
     }
 
     private void setAllPlayerList(Party party1, Party party2, List<BasePlayer> allPlayers) {
@@ -117,7 +179,7 @@ public class PlayGround {
     private void sortAgi(List<BasePlayer> sortAgiPlayers2) {
 
         Collections.sort(sortAgiPlayers2, new Comparator<BasePlayer>() {
-            
+
             @Override
             public int compare(BasePlayer playerFirst, BasePlayer playerSecond) {
                 return Integer.compare(playerSecond.getAgi(), playerFirst.getAgi());
@@ -176,7 +238,7 @@ public class PlayGround {
                 if (somePartyLost())
                     return;
 
-                System.out.println("");    
+                System.out.println("");
             }
 
             System.out.println("");
@@ -256,8 +318,8 @@ public class PlayGround {
         System.out.println(winPartyName + "の勝利...!!");
     }
 
-    //  size()が大きいほうのパーティーネームを返す。
+    // size()が大きいほうのパーティーネームを返す。
     private String getWinPartyName() {
-        return party1.getMembers().size() >= party2.getMembers().size() ? PARTY_NAME_FIRST:PARTY_NAME_SECOND;
+        return party1.getMembers().size() >= party2.getMembers().size() ? PARTY_NAME_FIRST : PARTY_NAME_SECOND;
     }
 }
