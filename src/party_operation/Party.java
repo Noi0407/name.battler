@@ -14,8 +14,9 @@ public class Party {
         this.members = new ArrayList<BasePlayer>();
     }
 
-    public void setPartyOperation(BaseOperation operation) {
+    public void setOperation(BaseOperation operation) {
         this.partyOperation = operation;
+        setPlayerOperartion();
     }
 
     public ArrayList<BasePlayer> getMembers() {
@@ -27,7 +28,11 @@ public class Party {
     }
 
     //playerに作戦を覚えさせる
-    
+    private void setPlayerOperartion(){
+        for (BasePlayer p : members ){
+            p.setOperation(partyOperation);
+        }
+    }
 
     /**
      * パーティーにプレイヤーを追加する

@@ -32,7 +32,7 @@ public enum OperationType {
 
         for (OperationType oType : OperationType.values()) {
 
-            System.out.printf("番号 : %1d  作戦名 : %10d  内容 : %20d /n", oType.getId(), oType.getOprationName(),
+            System.out.printf("番号 : %1d  作戦名 : %10s  内容 : %20s \n", oType.getId(), oType.getOprationName(),
                     oType.getOpetationManual());
 
         }

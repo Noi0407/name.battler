@@ -8,7 +8,7 @@ import magic.IMagic;
 public interface IOperation {
     void initOperation();
 
-    BasePlayer selectTarget(Party targetParty);
+    BasePlayer selectDefender(Party targetParty);
 
     IMagic selectMagic(List<IMagic> canMagic);
 }

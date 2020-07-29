@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 
 import party_operation.BaseOperation;
+import party_operation.Party;
 
 // プレイヤークラス(各種ジョブの基底クラス)
 public class BasePlayer {
@@ -248,6 +249,16 @@ public class BasePlayer {
 		int damage = getStr() - target.getDef();
 		
 		return  damage < 0 ? 0 : damage;
+	}
+
+	/**
+	 * ターゲットになるディフェンダーを決める
+	 * @param defenseParty
+	 * @return defender
+	 */
+	public BasePlayer decideDefender(Party defenseParty){
+		BasePlayer defender = operation.selectDefender(defenseParty);
+        return defender;
 	}
 
 	/**

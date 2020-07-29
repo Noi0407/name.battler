@@ -70,7 +70,7 @@ public class PlayGround {
             party.appendPlayer(createPlayer(playerName, jobType));
         }
 
-        party.setPartyOperation(inputOperation(PARTY_NAME));
+        party.setOperation(inputOperation(PARTY_NAME));
         
     }
 
@@ -118,12 +118,14 @@ public class PlayGround {
 
     private BaseOperation inputOperation(String PARTY_NAME) {
 
-        System.out.printf("/n" + PARTY_NAME + "の作戦を選択してください。/n");
+        System.out.printf("\n" + PARTY_NAME + "の作戦を選択してください。\n");
 
        //説明を表示
         OperationType.printDescription();
 
         int operationType = scanOperationType();
+
+        System.out.println("");
 
         // どの作戦が選ばれたか判断して返す
         BaseOperation operation = decisionOperation(operationType);
@@ -260,7 +262,7 @@ public class PlayGround {
         Party defenseParty = getDefenseParty(attacker);
 
         // ディフェンダーを決めて返す
-        BasePlayer defender = decideDefender(defenseParty);
+        BasePlayer defender = attacker.decideDefender(defenseParty);
 
         return defender;
     }
@@ -271,11 +273,7 @@ public class PlayGround {
         return party1.getMembers().contains(attacker) ? party2 : party1;
     }
 
-    private BasePlayer decideDefender(Party defenseParty) {
-        // 攻撃を受けるpartyのmembersからランダムで取得
-        BasePlayer defender = defenseParty.getMembers().get(random.nextInt(defenseParty.getMembers().size()));
-        return defender;
-    }
+   
 
     // 倒れたプレイヤーを消す
     private void diedPlayerRemove() {

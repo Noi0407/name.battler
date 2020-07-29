@@ -10,7 +10,7 @@ public class ReduceLowHpEnemy extends BaseOperation {
     }
 
     @Override
-    public BasePlayer selectTarget(Party targetParty) {
+    public BasePlayer selectDefender(Party targetParty) {
 
         BasePlayer defender = targetParty.getMembers().get(0);
 
