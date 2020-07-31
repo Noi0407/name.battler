@@ -16,6 +16,7 @@ public class Wizard extends BasePlayer {
     List<IMagic> allMagics = new ArrayList<>();
 
     public Wizard(String name) {
+        
         super(name);
 
         setMagics(someMagcs, false);

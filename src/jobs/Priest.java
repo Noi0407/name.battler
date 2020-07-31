@@ -53,6 +53,7 @@ public class Priest extends BasePlayer {
      */
     @Override
     public void attack(BasePlayer attacker, BasePlayer defender) {
+        
         System.out.println(this.getName() + "の攻撃!");
 
         if (canAllMagics()) {

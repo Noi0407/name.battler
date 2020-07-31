@@ -11,6 +11,7 @@ public class Poison implements IMagic {
 
     @Override
     public void doMagic(BasePlayer attacker, BasePlayer defender) {
+        
         System.out.println(attacker.getName() + "は" + defender.getName() + "に" + MAGIC_NAME + "を使った。");
         attacker.downMp(MAGIC_MP);
 

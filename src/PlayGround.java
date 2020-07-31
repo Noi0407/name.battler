@@ -4,6 +4,7 @@ import jobs.Brave;
 import jobs.Fighter;
 import jobs.Knight;
 import jobs.Priest;
+import jobs.Villager;
 import jobs.Wizard;
 import party_operation.Party;
 import party_operation.RandomSelect;
@@ -41,6 +42,8 @@ public class PlayGround {
 
     public void start() {
 
+        setupPlayerNum();
+
         inputPartyData(PARTY_NAME_FIRST, party1);
         inputPartyData(PARTY_NAME_SECOND, party2);
 
@@ -60,6 +63,39 @@ public class PlayGround {
 
     }
 
+    private void setupPlayerNum() {
+
+        System.out.println("何人ずつで戦いますか？");
+        ONE_PARTY_NUMBERS = inputPlayerNum();
+    }
+
+    private int inputPlayerNum() {
+
+        String pNumStr = stdin.next();
+
+        try {
+            int playerNum = Integer.parseInt(pNumStr);
+
+            if (notGoodNum(playerNum)) {
+                System.out.println("無効な数字のため、COMが自動で設定します。");
+                playerNum = random.nextInt(3) + 1;
+            }
+
+            return playerNum;
+
+        } catch (Exception e) {
+
+            System.out.println("数字で入力してください。");
+            pNumStr = stdin.next();
+
+        }
+        return random.nextInt(3) + 1;
+    }
+
+    private boolean notGoodNum(int playerNum) {
+        return playerNum <= 0 || playerNum >= 10 ? true : false;
+    }
+
     private void inputPartyData(String PARTY_NAME, Party party) {
 
         for (int i = 1; i <= ONE_PARTY_NUMBERS; i++) {
@@ -71,7 +107,7 @@ public class PlayGround {
         }
 
         party.setOperation(inputOperation(PARTY_NAME));
-        
+
     }
 
     private BasePlayer createPlayer(String playerName, int jobType) {
@@ -88,6 +124,9 @@ public class PlayGround {
             case 4:
                 return new Brave(playerName);
 
+            case 999:
+                return new Villager(playerName);
+
             default:
                 return new Fighter(playerName);
         }
@@ -95,11 +134,13 @@ public class PlayGround {
 
     // 名前の入力
     private String inputName(String PARTY_NAME, int i) {
+
         System.out.println(PARTY_NAME + "の" + i + "人目の名前を入力してください。");
         return stdin.next();
     }
 
     private int inputJob(String playerName) {
+
         System.out.println(playerName + "の職業を入力してください。");
         System.out.println("0:戦士 1:魔法使い 2:僧侶 3 騎士 4:勇者");
         String jobStr = stdin.next();
@@ -120,7 +161,7 @@ public class PlayGround {
 
         System.out.printf("\n" + PARTY_NAME + "の作戦を選択してください。\n");
 
-       //説明を表示
+        // 説明を表示
         OperationType.printDescription();
 
         int operationType = scanOperationType();
@@ -196,7 +237,9 @@ public class PlayGround {
     }
 
     private void printPartyStatus(String PARTY_NAME, Party party) {
+
         System.out.println("-" + PARTY_NAME + "-");
+
         for (BasePlayer p : party.getMembers()) {
             p.PrintStatus();
         }
@@ -216,6 +259,7 @@ public class PlayGround {
         int nowTurn = 1;
         // 最大ターンまで
         while (untilTurnMax(nowTurn)) {
+            
             System.out.println("--------------------------------");
             System.out.printf("- ターン%d -\n", nowTurn);
 
@@ -272,8 +316,6 @@ public class PlayGround {
         // パーティー1の中にattackerが居たら
         return party1.getMembers().contains(attacker) ? party2 : party1;
     }
-
-   
 
     // 倒れたプレイヤーを消す
     private void diedPlayerRemove() {

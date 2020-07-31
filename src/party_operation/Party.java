@@ -29,6 +29,7 @@ public class Party {
 
     //playerに作戦を覚えさせる
     private void setPlayerOperartion(){
+        
         for (BasePlayer p : members ){
             p.setOperation(partyOperation);
         }
