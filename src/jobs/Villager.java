@@ -16,10 +16,10 @@ public class Villager extends BasePlayer {
         // 村人のパラメータを名前から生成する
         this.hp = getNumber(0, 9) + 1;
         this.mp = 0;
-        this.str = getNumber(2, 999) + 1;
+        this.str = getNumber(2, 499) + 1;
         this.def = getNumber(3, 9) + 1;
         this.luck = getNumber(4, 90) + 10;
-        this.agi = getNumber(5, 60) + 20;
+        this.agi = getNumber(5, 40) + 20;
     }
     
     /**

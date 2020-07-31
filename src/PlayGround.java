@@ -124,7 +124,7 @@ public class PlayGround {
             case 4:
                 return new Brave(playerName);
 
-            case 999:
+            case 9:
                 return new Villager(playerName);
 
             default:
@@ -259,7 +259,7 @@ public class PlayGround {
         int nowTurn = 1;
         // 最大ターンまで
         while (untilTurnMax(nowTurn)) {
-            
+
             System.out.println("--------------------------------");
             System.out.printf("- ターン%d -\n", nowTurn);
 
