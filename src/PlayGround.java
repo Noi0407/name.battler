@@ -124,6 +124,7 @@ public class PlayGround {
             case 4:
                 return new Brave(playerName);
 
+            //隠し職業    
             case 9:
                 return new Villager(playerName);
 
